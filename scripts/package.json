@@ -1,0 +1,9 @@
+{
+  "name": "ffxiv-lodestone-item-id",
+  "private": true,
+  "devDependencies": {
+    "node-fetch": "^2.6.1",
+    "node-html-parser": "^3.0.3",
+    "papaparse": "^5.3.0"
+  }
+}

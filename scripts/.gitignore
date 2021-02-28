@@ -1,0 +1,7 @@
+# NPM
+node_modules/
+yarn-error.log
+
+# Fetched data
+pages/
+Item.csv
