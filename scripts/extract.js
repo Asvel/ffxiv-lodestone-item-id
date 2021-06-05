@@ -31,4 +31,4 @@ for (const line of Item.slice(3)) {
 }
 if (Object.keys(nameToLodestoneId).length !== 0) debugger;
 
-fs.writeFileSync('./lodestone-item-id.txt', lodestoneIds.slice(1).join('\n'));
+fs.writeFileSync('../lodestone-item-id.txt', lodestoneIds.slice(1).join('\n'));
