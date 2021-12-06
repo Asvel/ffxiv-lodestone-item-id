@@ -12,10 +12,10 @@ const fetch = require('node-fetch');
 const pipeline = util.promisify(stream.pipeline);
 
 const baseUrl = 'https://na.finalfantasyxiv.com/lodestone/playguide/db/item/?page=';
-const pageCount = 616;
+const pageCount = 659;
 
 (async () => {
-  fs.mkdirSync('./pages', { recursive: true })
+  fs.mkdirSync('./pages', { recursive: true });
   for (let page = 1; page <= pageCount; page++) {
     try {
       const res = await fetch(baseUrl + page);
@@ -31,5 +31,5 @@ const pageCount = 616;
 
 (async () => {
   const res = await fetch('https://raw.githubusercontent.com/xivapi/ffxiv-datamining/master/csv/Item.csv');
-  await pipeline(res.body, fs.createWriteStream(`./pages/Item.csv`));
+  await pipeline(res.body, fs.createWriteStream(`./Item.csv`));
 })();
