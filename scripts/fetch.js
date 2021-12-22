@@ -12,19 +12,21 @@ const fetch = require('node-fetch');
 const pipeline = util.promisify(stream.pipeline);
 
 const baseUrl = 'https://na.finalfantasyxiv.com/lodestone/playguide/db/item/?page=';
-const pageCount = 659;
+const pageCount = 661;
 
 (async () => {
   fs.mkdirSync('./pages', { recursive: true });
   for (let page = 1; page <= pageCount; page++) {
     try {
       const res = await fetch(baseUrl + page);
-      if (!res.ok) debugger;
+      if (!res.ok) throw res.statusText;
       await pipeline(res.body, fs.createWriteStream(`./pages/${page}.html`));
-      console.log(`page ${page} finished.`);
+      process.stdout.clearLine(0);
+      process.stdout.cursorTo(0);
+      process.stdout.write(`page ${page} finished.`);
       await new Promise(r => setTimeout(r, 2000));
     } catch (e) {
-      debugger;
+      console.error(page, e);
     }
   }
 })();
