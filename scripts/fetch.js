@@ -12,7 +12,7 @@ const fetch = require('node-fetch');
 const pipeline = util.promisify(stream.pipeline);
 
 const baseUrl = 'https://na.finalfantasyxiv.com/lodestone/playguide/db/item/?page=';
-const pageCount = 661;
+const pageCount = 669;
 
 (async () => {
   fs.mkdirSync('./pages', { recursive: true });
