@@ -21,8 +21,8 @@ for (const filename of fs.readdirSync('./pages/')) {
 
 const lodestoneIds = [];
 const Item = Papa.parse(fs.readFileSync('./Item.csv', 'utf8')).data;
-const nameIndex = Item[1].indexOf('Name');
-for (const line of Item.slice(3)) {
+const nameIndex = Item[0].indexOf('Name');
+for (const line of Item.slice(1)) {
   const name = line[nameIndex];
   if (name) {
     lodestoneIds[Number(line[0])] = nameToLodestoneId[name];
