@@ -7,7 +7,6 @@ process.chdir(__dirname);
 const util = require('util');
 const stream = require('stream');
 const fs = require('fs');
-const fetch = require('node-fetch');
 
 const pipeline = util.promisify(stream.pipeline);
 
@@ -16,7 +15,7 @@ const pageCount = 897;
 
 (async () => {
   fs.mkdirSync('./pages', { recursive: true });
-  for (let page = 1; page <= pageCount; page++) {
+  for (let page = 1; page <= pageCount;) {
     try {
       const res = await fetch(baseUrl + page);
       if (!res.ok) throw res.statusText;
@@ -24,10 +23,11 @@ const pageCount = 897;
       process.stdout.clearLine(0);
       process.stdout.cursorTo(0);
       process.stdout.write(`page ${page} finished.`);
-      await new Promise(r => setTimeout(r, 2000));
+      page++;
     } catch (e) {
       console.error(page, e);
     }
+    await new Promise(r => setTimeout(r, 2000));
   }
 })();
 
