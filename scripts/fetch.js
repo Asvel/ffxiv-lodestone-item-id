@@ -11,7 +11,7 @@ const fs = require('fs');
 const pipeline = util.promisify(stream.pipeline);
 
 const baseUrl = 'https://na.finalfantasyxiv.com/lodestone/playguide/db/item/?page=';
-const pageCount = 897;
+const pageCount = 898;
 
 (async () => {
   fs.mkdirSync('./pages', { recursive: true });
